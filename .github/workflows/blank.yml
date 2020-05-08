@@ -27,7 +27,9 @@ jobs:
       run: |
         zstd -V
         echo "Upgrade zstd"
-        (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/horta/zstd.install/master/install.bat', 'install.bat') && install.bat
+        wget -O install.bat https://raw.githubusercontent.com/horta/zstd.install/master/install.bat
+        ls
+        install.bat
         dd if=/dev/urandom of=file.txt count=150 bs=1048576
         echo "Running tar"
         #C:\windows\System32\tar.exe --use-compress-program "zstd -T0" -cf cache.tzst -P -C cache-dir --files-from manifest.txt
