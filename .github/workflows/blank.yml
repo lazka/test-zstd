@@ -28,12 +28,13 @@ jobs:
         C:\windows\System32\tar.exe --version
         echo "Create random file"
         dd if=/dev/urandom of=file.txt count=150 bs=1048576
-        echo "Running zstd"
-        zstd.exe file.txt
+        #echo "Running zstd"
+        #zstd.exe file.txt
         #echo "Running tar"
         #C:\windows\System32\tar.exe --use-compress-program "zstd -T0" -cf cache.tzst -P -C cache-dir --files-from manifest.txt
         #tar.exe --use-compress-program "zstd -T0" -czf cache.tgz file.txt
         #tar.exe --use-compress-program "./zstd-v1.4.4-win64/zstd.exe" -czf cache.tgz file.txt
         #tar.exe -czf cache.tgz file.txt
+        C:\windows\System32\tar.exe -c file.txt | zstd.exe -T0 > cache.tzst
         echo "Done"
         ls
