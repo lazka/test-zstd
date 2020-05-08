@@ -27,7 +27,7 @@ jobs:
         zstd.exe -V
         C:\windows\System32\tar.exe --version
         echo "Create random file"
-        dd if=/dev/urandom of=file.txt count=150 bs=1048576
+        dd if=/dev/urandom of=file.txt count=1 bs=1048576
         echo "Running zstd standalone"
         zstd.exe -o file.zstd file.txt
         ls file.zstd
