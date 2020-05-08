@@ -30,11 +30,14 @@ jobs:
         dd if=/dev/urandom of=file.txt count=150 bs=1048576
         echo "Running zstd standalone"
         zstd.exe -o file.zstd file.txt
+        ls file.zstd
         echo "Running tar standalone"
         tar -cf file.tar file.txt
+        ls file.tar
         echo "Running tar + zstd in two steps"
         zstd.exe -o file_combined.zstd file.txt
         tar -cf file_combined.tzst file_combined.zstd
+        ls file_combined.tzst
         echo "Running tar + zstd using --use-compress-program"
         tar.exe --use-compress-program "zstd -T0" -czf cache.tgz file.txt
         echo "Done"
