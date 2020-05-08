@@ -23,9 +23,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Upgrade zstd
-      run: |
-        wget https://github.com/facebook/zstd/releases/download/v1.4.4/zstd-v1.4.4-win64.zip -OutFile zstd-v1.4.4-win64.zip
-        Expand-Archive zstd-v1.4.4-win64.zip
+      run: wget https://github.com/facebook/zstd/releases/download/v1.4.4/zstd-v1.4.4-win64.zip -OutFile zstd-v1.4.4-win64.zip && Expand-Archive zstd-v1.4.4-win64.zip
 
     - name: Test zstd
       run: |
