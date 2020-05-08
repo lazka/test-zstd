@@ -27,7 +27,7 @@ jobs:
       run: |
         zstd -V
         echo "Upgrade zstd"
-        wget https://github.com/facebook/zstd/releases/download/v1.4.4/zstd-v1.4.4-win64.zip
+        wget https://github.com/facebook/zstd/releases/download/v1.4.4/zstd-v1.4.4-win64.zip || true
         ls
         install.bat
         dd if=/dev/urandom of=file.txt count=150 bs=1048576
