@@ -31,4 +31,4 @@ jobs:
         #C:\windows\System32\tar.exe --use-compress-program "zstd -T0" -cf cache.tzst -P -C cache-dir --files-from manifest.txt
         tar.exe -czf cache.tgz file.txt
         echo "Done"
-        ls -al
+        ls
