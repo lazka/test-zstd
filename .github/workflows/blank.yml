@@ -24,6 +24,7 @@ jobs:
 
     - name: Test zstd
       run: |
+        $ErrorActionPreference = 'SilentlyContinue'
         zstd.exe -V
         C:\windows\System32\tar.exe --version
         echo "Create random file"
