@@ -26,7 +26,9 @@ jobs:
     - name: Test zstd
       run: |
         zstd -V
-        dd if=/dev/urandom of=file.txt count=1 bs=1048576
-        echo "file.txt" > manifest.txt
-        C:\windows\System32\tar.exe --use-compress-program "zstd -T0" -cf cache.tzst -P -C . --files-from manifest.txt
+        mkdir -p cache-dir
+        dd if=/dev/urandom of=cache-dir/file.txt count=1 bs=1048576
+        echo "cache-dir" > manifest.txt
+        ls -al
+        C:\windows\System32\tar.exe --use-compress-program "zstd -T0" -cf cache.tzst -P -C cache-dir --files-from manifest.txt
         ls -al
