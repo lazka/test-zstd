@@ -23,19 +23,18 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Upgrade zstd
-      shell: bash
       run: |
-        wget https://github.com/facebook/zstd/releases/download/v1.4.4/zstd-v1.4.4-win64.zip
-        unzip zstd-v1.4.4-win64.zip
-    
+        wget https://github.com/facebook/zstd/releases/download/v1.4.4/zstd-v1.4.4-win64.zip -OutFile zstd-v1.4.4-win64.zip
+        Expand-Archive zstd-v1.4.4-win64.zip
+
     - name: Test zstd
       run: |
-        zstd -V
+        ./zstd-v1.4.4-win64/zstd.exe -V
         dd if=/dev/urandom of=file.txt count=150 bs=1048576
         echo "Running tar"
         #C:\windows\System32\tar.exe --use-compress-program "zstd -T0" -cf cache.tzst -P -C cache-dir --files-from manifest.txt
         #tar.exe --use-compress-program "zstd -T0" -czf cache.tgz file.txt
-        tar.exe --use-compress-program "zstd" -czf cache.tgz file.txt
+        tar.exe --use-compress-program "./zstd-v1.4.4-win64/zstd.exe" -czf cache.tgz file.txt
         #tar.exe -czf cache.tgz file.txt
         echo "Done"
         ls
