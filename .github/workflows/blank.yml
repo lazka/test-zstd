@@ -28,5 +28,5 @@ jobs:
         zstd -V
         dd if=/dev/urandom of=file.txt count=150 bs=1048576
         echo "file.txt" > manifest.txt
-        #C:\windows\System32\tar.exe --use-compress-program "zstd -T0 --long=30" -cf cache.tzst -P -C . --files-from manifest.txt
+        C:\windows\System32\tar.exe --use-compress-program "zstd -T0" -cf cache.tzst -P -C . --files-from manifest.txt
         ls -al
