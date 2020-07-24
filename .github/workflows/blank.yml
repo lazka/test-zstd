@@ -40,7 +40,9 @@ jobs:
         tar -cf file_combined.tzst file_combined.zstd
         ls file_combined.tzst
         echo "Running tar + zstd using --use-compress-program"
+        .\libarchive\bin\bsdtar.exe --version
+        .\libarchive\bin\bsdtar.exe --use-compress-program "zstd" -cf file.tzst file.txt
         .\libarchive\bin\bsdtar.exe --use-compress-program "zstd -T0" -cf file.tzst file.txt
-        tar.exe -I zstd -cf file.tzst file.txt
+        #tar.exe -I zstd -cf file.tzst file.txt
         ls file.tzst
         echo "Done"
